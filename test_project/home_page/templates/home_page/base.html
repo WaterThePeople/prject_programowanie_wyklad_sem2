@@ -11,27 +11,28 @@
     <link rel="stylesheet" type="text/css" href="{% static 'home_page/main.css' %}">
 
     {% if title %}
-        <title>Django blog - {{title}}</title>
+        <title>Web application</title>
     {% else %}
-        <title>Django blog</title>
+        <title>Web application</title>
     {%endif %}
 </head>
 <body>
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           <div class="container">
-            <a class="navbar-brand mr-4" href="/">Django Blog</a>
+            <a class="navbar-brand mr-4" href="/">HOME PAGE</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'home_page-home' %}">Home</a>
-                <a class="nav-item nav-link" href="{% url 'home_page-welcome' %}">Welcome</a>
+              <!--  <a class="nav-item nav-link" href="{% url 'home_page-home' %}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'home_page-welcome' %}">Welcome</a> -->
               </div>
               <div class="navbar-nav">
                 {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-item nav-link" href="{% url 'post-create' %}">Create post</a>
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                   <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
