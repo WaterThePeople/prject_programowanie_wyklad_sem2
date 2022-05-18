@@ -51,12 +51,13 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
             return True
         return False
 
-class AddCommentView(CreateView):
+class AddCommentView(LoginRequiredMixin,CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'home_page/add_comment.html'
 
     def form_valid(self,form):
+        form.instance.author = self.request.user
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
 
